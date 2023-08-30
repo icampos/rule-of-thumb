@@ -12,11 +12,6 @@ import useFetchData from "./hooks/useFetchData";
 
 import PopeFrancisImg from "./assets/img/pope-francis.png";
 
-const votes = {
-  positive: 1,
-  negative: 1,
-};
-
 function App() {
   const { people } = useFetchData();
 
@@ -34,8 +29,9 @@ function App() {
               description={person.description}
               category={person.category}
               picture={PopeFrancisImg}
-              lastUpdated=""
+              lastUpdated={person.lastUpdated}
               votes={person.votes}
+              voted={person.voted}
             />
           ))}
         </VotingSection>

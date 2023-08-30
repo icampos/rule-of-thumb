@@ -14,6 +14,7 @@ interface VotingCardProps {
   category: string;
   picture: string;
   lastUpdated: string;
+  voted: boolean;
   votes: {
     positive: number;
     negative: number;
@@ -27,10 +28,22 @@ const VotingCard = ({
   picture,
   lastUpdated,
   votes,
+  voted,
 }: VotingCardProps) => {
   const viewOption = useContext(AppContext);
 
-  const { isVoteNowDisabled, handleThumbsClick,selectedClass} = useVoting();
+  const { isVoteNowDisabled, handleThumbsClick, selectedClass, getPercentages } = useVoting();
+
+  const categoryText = voted
+    ? "Thank you for your vote!"
+    : `${lastUpdated} ago in ${category}`;
+
+  const result =
+    votes.positive > votes.negative
+      ? { resultClass: "positive", resultIcon: ThumbsUpImg }
+      : { resultClass: "negative", resultIcon: ThumbsDownImg };
+
+  const percentages = getPercentages(votes.positive, votes.negative)
 
   return (
     <div className={`voting-card voting-card__${viewOption}`}>
@@ -39,8 +52,8 @@ const VotingCard = ({
       <div className="voting-card__content">
         <div className="voting-card__details">
           <div className="voting-card__info">
-            <div className="voting-card__result voting-card__positive">
-              <img src={ThumbsUpImg} alt="thumbs up" />
+            <div className={`voting-card__result voting-card__${result.resultClass}`}>
+              <img src={result.resultIcon} alt="thumbs up" />
             </div>
             <div>
               <h2 className="voting-card__title">{name}</h2>
@@ -48,7 +61,7 @@ const VotingCard = ({
             </div>
           </div>
           <div className="voting-card__cta">
-            <p className="voting-card__category">{category}</p>
+            <p className="voting-card__category">{categoryText}</p>
             <div className={`voting-card__buttons ${selectedClass}`}>
               <button
                 onClick={() => handleThumbsClick(POSITIVE_STATUS)}
@@ -75,13 +88,13 @@ const VotingCard = ({
           </div>
         </div>
         <div className="voting-card__gauge">
-          <div className="voting-card__gauge-left">
+          <div className="voting-card__gauge-left" style={{width: `${percentages.positive}%`}}>
             <img src={ThumbsUpImg} alt="thumbs up" />
-            <span className="voting-card__gauge-number">{votes.positive}</span>
+            <span className="voting-card__gauge-number">{percentages.positive} %</span>
           </div>
-          <div className="voting-card__gauge-right">
+          <div className="voting-card__gauge-right" style={{width: `${percentages.negative}%`}}>
             <img src={ThumbsDownImg} alt="thumbs down" />
-            <span className="voting-card__gauge-number">{votes.negative}</span>
+            <span className="voting-card__gauge-number">{percentages.negative} %</span>
           </div>
         </div>
       </div>

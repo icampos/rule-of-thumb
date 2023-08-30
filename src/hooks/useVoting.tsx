@@ -19,6 +19,17 @@ const useVoting = () => {
     }
   };
 
+  const getPercentages = (positive: number, negative: number) => {
+
+
+    const totalVotes = positive + negative;
+
+    return {
+      positive: ((positive/totalVotes)*100).toFixed(1),
+      negative: ((negative/totalVotes)*100).toFixed(1),
+    };
+  };
+
   return {
     isNegativeSelected,
     isPositiveSelected,
@@ -26,6 +37,7 @@ const useVoting = () => {
     handleThumbsClick,
     setIsVoteNowDisabled,
     selectedClass,
+    getPercentages,
   };
 };
 
