@@ -1,11 +1,13 @@
 import { useContext } from "react";
 
 import "../styles/VotingCard.scss";
-import {AppContext} from "../context"
+import { AppContext } from "../context";
+import useVoting from "../hooks/useVoting";
 
 import ThumbsUpImg from "../assets/img/thumbs-up.svg";
 import ThumbsDownImg from "../assets/img/thumbs-down.svg";
 
+import { POSITIVE_STATUS, NEGATIVE_STATUS } from "../constants";
 interface VotingCardProps {
   name: string;
   description: string;
@@ -28,6 +30,8 @@ const VotingCard = ({
 }: VotingCardProps) => {
   const viewOption = useContext(AppContext);
 
+  const { isVoteNowDisabled, handleThumbsClick,selectedClass} = useVoting();
+
   return (
     <div className={`voting-card voting-card__${viewOption}`}>
       <img className="voting-card__background" src={picture} alt={name} />
@@ -45,16 +49,25 @@ const VotingCard = ({
           </div>
           <div className="voting-card__cta">
             <p className="voting-card__category">{category}</p>
-            <div className="voting-card__buttons">
-              <button className="icon-button" aria-label="thumbs up">
+            <div className={`voting-card__buttons ${selectedClass}`}>
+              <button
+                onClick={() => handleThumbsClick(POSITIVE_STATUS)}
+                className="icon-button"
+                aria-label="thumbs up"
+              >
                 <img src={ThumbsUpImg} alt="thumbs up" />
               </button>
-              <button className="icon-button" aria-label="thumbs down">
+              <button
+                onClick={() => handleThumbsClick(NEGATIVE_STATUS)}
+                className="icon-button"
+                aria-label="thumbs down"
+              >
                 <img src={ThumbsDownImg} alt="thumbs down" />
               </button>
               <button
                 className="voting-card__vote-button"
                 aria-label="vote now"
+                disabled={isVoteNowDisabled}
               >
                 Vote Now
               </button>

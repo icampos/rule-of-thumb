@@ -17,13 +17,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   @include desktop {
     width: 45px;
     height: 45px;
   }
 }
 
+.outlined-selected{
+  outline: 2px solid #ffffff;
+}
 
 .voting-card {
   position: relative;
@@ -132,10 +135,14 @@
   &__vote-button {
     color: var(--color-white);
     border: 1px solid #FFF;
-    background: rgba(0, 0, 0, 0.60);
     padding: 5px 10px;
     font-size: 1.25rem;
     min-width: 107px;
+    background: rgba(48, 48, 48, 0.60);
+
+    &:disabled {
+      background: rgba(0, 0, 0, 0.60);
+    }
 
     @include tablet {
       font-size: 1.071rem;
@@ -192,6 +199,16 @@
     display: flex;
     gap: 12px;
     justify-content: flex-end;
+    &.thumbs-up{
+      .icon-button[aria-label="thumbs up"]{
+        @extend .outlined-selected
+      }
+    }
+    &.thumbs-down{
+      .icon-button[aria-label="thumbs down"]{
+        @extend .outlined-selected
+      }
+    }
   }
 
   &__buttons .icon-button {
