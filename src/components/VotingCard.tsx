@@ -45,19 +45,19 @@ const VotingCard = ({
             <button className="icon-button" aria-label="thumbs down">
               <img src={ThumbsDownImg} alt="thumbs down" />
             </button>
-            <button className="vote-button" aria-label="vote now">
+            <button className="voting-card__vote-button" aria-label="vote now">
               Vote Now
             </button>
           </div>
         </div>
-        <div className="voting-gauge">
-        <div className="voting-gauge__left">
+        <div className="voting-card__gauge">
+        <div className="voting-card__gauge-left">
           <img src={ThumbsUpImg} alt="thumbs up" />
-          <span className="voting-gauge__number">{votes.positive}</span>
+          <span className="voting-card__gauge-number">{votes.positive}</span>
         </div>
-        <div className="voting-gauge__right">
+        <div className="voting-card__gauge-right">
           <img src={ThumbsDownImg} alt="thumbs down" />
-          <span className="voting-gauge__number">{votes.negative}</span>
+          <span className="voting-card__gauge-number">{votes.negative}</span>
         </div>
       </div>
       </div>
