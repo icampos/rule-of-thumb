@@ -23,7 +23,7 @@ const VotingSection = ({ children }: VotingSectionProps) => {
             <option value="grid">Grid</option>
           </select>
         </div>
-        <div className="voting-section__list">{children}</div>
+        <div className={`voting-section__content voting-section__${view}`}>{children}</div>
       </section>
     </AppContext.Provider>
   );

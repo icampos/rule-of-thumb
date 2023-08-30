@@ -29,7 +29,7 @@ const VotingCard = ({
   const viewOption = useContext(AppContext);
 
   return (
-    <div className="voting-card">
+    <div className={`voting-card voting-card__${viewOption}`}>
       <img className="voting-card__background" src={picture} alt={name} />
       <div className="voting-card__glass-background"></div>
       <div className="voting-card__content">

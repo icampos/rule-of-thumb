@@ -1,33 +1,41 @@
 @import './mixins.scss';
 
-.voting-section{
+.mobile-grid {}
+
+.voting-section {
   padding: 0 12px;
-  &__header{
+
+  &__header {
     margin: 24px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
     @include tablet {
       margin: 36px 0 30px;
     }
-    @include desktop{
+
+    @include desktop {
       align-items: flex-end;
     }
 
   }
-  &__title{
+
+  &__title {
     color: #464646;
     font-size: 2rem;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
     margin: 0;
+
     @include tablet {
-     font-size: 2.5rem;
+      font-size: 2.5rem;
     }
   }
-  &__picker{
+
+  &__picker {
     display: none;
     width: 131px;
     height: 28px;
@@ -35,12 +43,40 @@
     font-size: 0.75rem;
     border-radius: 0;
     border: 2px solid #333;
+
     @include tablet {
       display: block;
     }
+
     @include desktop {
       width: 173px;
       height: 36px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    gap: 12px;
+
+    &>div {
+      flex: 0 0 auto;
+    }
+    @include tablet {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
+
+
+  &__grid {
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-column-gap: 27px;
+      grid-row-gap: 27px;
     }
   }
 }

@@ -32,6 +32,22 @@ function App() {
               lastUpdated=""
               votes={votes}
             />
+            <VotingCard
+              name="Kanye West"
+              description="Vestibulum diam ante, porttitor a odio eget, rhoncus.  Eu velit…"
+              category="Enterteinment"
+              picture={PopeFrancisImg}
+              lastUpdated=""
+              votes={votes}
+            />
+            <VotingCard
+              name="Kanye West"
+              description="Vestibulum diam ante, porttitor a odio eget, rhoncus.  Eu velit…"
+              category="Enterteinment"
+              picture={PopeFrancisImg}
+              lastUpdated=""
+              votes={votes}
+            />
           </VotingSection>
           <BannerBottom />
           <hr role="separator" />
