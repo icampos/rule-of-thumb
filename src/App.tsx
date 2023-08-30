@@ -8,6 +8,8 @@ import BannerBottom from "./components/BannerBottom";
 import VotingSection from "./components/VotingSection";
 import VotingCard from "./components/VotingCard";
 
+import useFetchData from "./hooks/useFetchData";
+
 import PopeFrancisImg from "./assets/img/pope-francis.png";
 
 const votes = {
@@ -15,46 +17,34 @@ const votes = {
   negative: 1,
 };
 
-
 function App() {
-  return (
-      <div className="App">
-        <NavBar />
-        <Header />
-        <div className="max-centered">
-          <BannerTop />
-          <VotingSection>
-            <VotingCard
-              name="Kanye West"
-              description="Vestibulum diam ante, porttitor a odio eget, rhoncus.  Eu velit…"
-              category="Enterteinment"
-              picture={PopeFrancisImg}
-              lastUpdated=""
-              votes={votes}
-            />
-            <VotingCard
-              name="Kanye West"
-              description="Vestibulum diam ante, porttitor a odio eget, rhoncus.  Eu velit…"
-              category="Enterteinment"
-              picture={PopeFrancisImg}
-              lastUpdated=""
-              votes={votes}
-            />
-            <VotingCard
-              name="Kanye West"
-              description="Vestibulum diam ante, porttitor a odio eget, rhoncus.  Eu velit…"
-              category="Enterteinment"
-              picture={PopeFrancisImg}
-              lastUpdated=""
-              votes={votes}
-            />
-          </VotingSection>
-          <BannerBottom />
-          <hr role="separator" />
+  const { people } = useFetchData();
 
-          <Footer />
-        </div>
+  return (
+    <div className="App">
+      <NavBar />
+      <Header />
+      <div className="max-centered">
+        <BannerTop />
+        <VotingSection>
+          {people?.map((person) => (
+            <VotingCard
+              key={person.id}
+              name={person.name}
+              description={person.description}
+              category={person.category}
+              picture={PopeFrancisImg}
+              lastUpdated=""
+              votes={person.votes}
+            />
+          ))}
+        </VotingSection>
+        <BannerBottom />
+        <hr role="separator" />
+
+        <Footer />
       </div>
+    </div>
   );
 }
 
