@@ -1,6 +1,10 @@
+import { useContext } from "react";
+
+import "../styles/VotingCard.scss";
+import {AppContext} from "../context"
+
 import ThumbsUpImg from "../assets/img/thumbs-up.svg";
 import ThumbsDownImg from "../assets/img/thumbs-down.svg";
-import "../styles/VotingCard.scss";
 
 interface VotingCardProps {
   name: string;
@@ -22,6 +26,8 @@ const VotingCard = ({
   lastUpdated,
   votes,
 }: VotingCardProps) => {
+  const viewOption = useContext(AppContext);
+
   return (
     <div className="voting-card">
       <img className="voting-card__background" src={picture} alt={name} />
