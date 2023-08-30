@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import "../styles/VotingSection.scss";
 
 interface VotingSectionProps {
   children: ReactNode;

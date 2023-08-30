@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include desktop() {
+  @include desktop {
     width: 45px;
     height: 45px;
   }

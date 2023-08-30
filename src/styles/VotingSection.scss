@@ -1,0 +1,46 @@
+@import './mixins.scss';
+
+.voting-section{
+  padding: 0 12px;
+  &__header{
+    margin: 24px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include tablet {
+      margin: 36px 0 30px;
+    }
+    @include desktop{
+      align-items: flex-end;
+    }
+
+  }
+  &__title{
+    color: #464646;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0;
+    @include tablet {
+     font-size: 2.5rem;
+    }
+  }
+  &__picker{
+    display: none;
+    width: 131px;
+    height: 28px;
+    padding: 0 40px;
+    font-size: 0.75rem;
+    border-radius: 0;
+    border: 2px solid #333;
+    @include tablet {
+      display: block;
+    }
+    @include desktop {
+      width: 173px;
+      height: 36px;
+    }
+  }
+}
