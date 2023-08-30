@@ -10,6 +10,19 @@
   }
 }
 
+.thumbs{
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include desktop() {
+    width: 45px;
+    height: 45px;
+  }
+}
+
 
 .voting-card {
   position: relative;
@@ -19,6 +32,10 @@
   @include tablet {
     width: 100%;
     height: 142px;
+  }
+
+  @include desktop {
+    height: 170px;
   }
 
   &__glass-background {
@@ -38,6 +55,9 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    @include tablet() {
+      width: auto;
+    }
   }
 
   &__content {
@@ -76,6 +96,10 @@
       font-size: 2.143rem;
       margin-top: 8px;
     }
+
+    @include desktop() {
+      font-size: 2rem;
+    }
   }
 
   &__description {
@@ -85,6 +109,10 @@
 
     @include tablet {
       font-size: 1.071rem;
+    }
+
+    @include desktop() {
+      font-size: 1rem;
     }
   }
 
@@ -110,16 +138,22 @@
       font-size: 1.071rem;
       padding: 8px;
     }
+
+    @include desktop() {
+      font-size: 1rem;
+      padding: 5px 10px;
+      min-width: 135px;
+    }
   }
 
   &__result {
-    width: 30px;
-    height: 30px;
-    flex-shrink: 0;
+    @extend .thumbs;
   }
 
   &__result img {
-    margin: 25%;
+    @include desktop() {
+      width: 50%;
+    }
   }
 
   &__positive {
@@ -144,6 +178,7 @@
     text-align: right;
     margin: 0 0 16px;
     font-weight: 700;
+
     @include tablet {
       font-size: 0.85rem;
       margin-top: 8px;
@@ -157,8 +192,7 @@
   }
 
   &__buttons .icon-button {
-    width: 30px;
-    height: 30px;
+    @extend .thumbs;
   }
 
   &__buttons img {
@@ -176,6 +210,9 @@
     display: flex;
     align-items: center;
     padding: 0 12px;
+    @include desktop{
+      min-height: 54px;
+    }
   }
 
   &__gauge-left {
