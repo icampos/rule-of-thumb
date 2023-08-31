@@ -1,14 +1,4 @@
-@mixin tablet {
-  @media all and (min-width: 768px) {
-    @content
-  }
-}
-
-@mixin desktop {
-  @media all and (min-width: 1100px) {
-    @content
-  }
-}
+@import './mixins.scss';
 
 .thumbs {
   width: 30px;
@@ -26,7 +16,7 @@
 }
 
 .outlined-selected {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--color-white);
 }
 
 .voting-card {
@@ -63,14 +53,13 @@
     z-index: 0;
 
     @include tablet() {
-      width: auto;
+      width: 20%;
     }
   }
 
   &__content {
     width: 100%;
     height: 100%;
-    ;
     color: var(--color-white);
     display: flex;
     flex-direction: column;
@@ -94,7 +83,7 @@
   }
 
   &__title {
-    margin: 0 0 7px;
+    margin: 0 0 5px;
     font-size: 2.5rem;
     font-weight: 400;
     line-height: 1;
@@ -141,7 +130,7 @@
 
   &__vote-button {
     color: var(--color-white);
-    border: 1px solid #FFF;
+    border: 1px solid var(--color-white);
     padding: 5px 10px;
     font-size: 1.25rem;
     min-width: 107px;

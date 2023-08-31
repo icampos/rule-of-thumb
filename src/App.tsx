@@ -29,7 +29,7 @@ function App() {
               name={person.name}
               description={person.description}
               category={person.category}
-              picture={PopeFrancisImg}
+              picture={person.image}
               lastUpdated={person.lastUpdated}
               votes={person.votes}
               voted={person.voted}
