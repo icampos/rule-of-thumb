@@ -8,12 +8,12 @@ import BannerBottom from "./components/BannerBottom";
 import VotingSection from "./components/VotingSection";
 import VotingCard from "./components/VotingCard";
 
-import useFetchData from "./hooks/useFetchData";
+import UseFetchData from "./hooks/useOnSnapShot";
 
 import PopeFrancisImg from "./assets/img/pope-francis.png";
 
 function App() {
-  const { people } = useFetchData();
+  const { people } = UseFetchData();
 
   return (
     <div className="App">

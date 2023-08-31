@@ -12,9 +12,7 @@ interface useVotingProps {
 }
 
 const useVoting = ({ id, votes, voted }: useVotingProps) => {
-  const [isVoteNowDisabled, setIsVoteNowDisabled] = useState(
-    voted ? false : true
-  );
+  const [isVoteNowDisabled, setIsVoteNowDisabled] = useState(voted === false);
   const [isPositiveSelected, setisPositiveSelected] = useState<boolean>(false);
   const [isNegativeSelected, setisNegativeSelected] = useState<boolean>(false);
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
@@ -40,6 +38,7 @@ const useVoting = ({ id, votes, voted }: useVotingProps) => {
       setIsVoted(false);
       setIsVoteNowDisabled(true);
       UseUpdateData(id, votes, false);
+      setSelectedClass(null);
     } else {
       const positive =
         selection === POSITIVE_STATUS ? votes.positive + 1 : votes.positive;
@@ -51,6 +50,8 @@ const useVoting = ({ id, votes, voted }: useVotingProps) => {
         negative: negative,
       };
       UseUpdateData(id, updatedVotes, true);
+      setIsVoted(true);
+      setSelectedClass(null);
     }
   };
 
