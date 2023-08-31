@@ -9,6 +9,7 @@ import ThumbsDownImg from "../assets/img/thumbs-down.svg";
 
 import { POSITIVE_STATUS, NEGATIVE_STATUS } from "../constants";
 interface VotingCardProps {
+  id: string;
   name: string;
   description: string;
   category: string;
@@ -22,6 +23,7 @@ interface VotingCardProps {
 }
 
 const VotingCard = ({
+  id,
   name,
   description,
   category,
@@ -32,18 +34,30 @@ const VotingCard = ({
 }: VotingCardProps) => {
   const viewOption = useContext(AppContext);
 
-  const { isVoteNowDisabled, handleThumbsClick, selectedClass, getPercentages } = useVoting();
+  const {
+    isVoteNowDisabled,
+    handleThumbsClick,
+    selectedClass,
+    getPercentages,
+    handleUpdateData,
+  } = useVoting({id, votes});
 
-  const categoryText = voted
-    ? "Thank you for your vote!"
-    : `${lastUpdated} ago in ${category}`;
+  const votedState = voted
+    ? {
+        categoryText: "Thank you for your vote!",
+        voteButtonText: "Vote Again",
+      }
+    : {
+        categoryText: `${lastUpdated} ago in ${category}`,
+        voteButtonText: "Vote Now",
+      };
 
   const result =
     votes.positive > votes.negative
       ? { resultClass: "positive", resultIcon: ThumbsUpImg }
       : { resultClass: "negative", resultIcon: ThumbsDownImg };
 
-  const percentages = getPercentages(votes.positive, votes.negative)
+  const percentages = getPercentages(votes.positive, votes.negative);
 
   return (
     <div className={`voting-card voting-card__${viewOption}`}>
@@ -52,7 +66,9 @@ const VotingCard = ({
       <div className="voting-card__content">
         <div className="voting-card__details">
           <div className="voting-card__info">
-            <div className={`voting-card__result voting-card__${result.resultClass}`}>
+            <div
+              className={`voting-card__result voting-card__${result.resultClass}`}
+            >
               <img src={result.resultIcon} alt="thumbs up" />
             </div>
             <div>
@@ -61,7 +77,7 @@ const VotingCard = ({
             </div>
           </div>
           <div className="voting-card__cta">
-            <p className="voting-card__category">{categoryText}</p>
+            <p className="voting-card__category">{votedState.categoryText}</p>
             <div className={`voting-card__buttons ${selectedClass}`}>
               <button
                 onClick={() => handleThumbsClick(POSITIVE_STATUS)}
@@ -81,20 +97,31 @@ const VotingCard = ({
                 className="voting-card__vote-button"
                 aria-label="vote now"
                 disabled={isVoteNowDisabled}
+                onClick={handleUpdateData}
               >
-                Vote Now
+                {votedState.voteButtonText}
               </button>
             </div>
           </div>
         </div>
         <div className="voting-card__gauge">
-          <div className="voting-card__gauge-left" style={{width: `${percentages.positive}%`}}>
+          <div
+            className="voting-card__gauge-left"
+            style={{ width: `${percentages.positive}%` }}
+          >
             <img src={ThumbsUpImg} alt="thumbs up" />
-            <span className="voting-card__gauge-number">{percentages.positive} %</span>
+            <span className="voting-card__gauge-number">
+              {percentages.positive} %
+            </span>
           </div>
-          <div className="voting-card__gauge-right" style={{width: `${percentages.negative}%`}}>
+          <div
+            className="voting-card__gauge-right"
+            style={{ width: `${percentages.negative}%` }}
+          >
             <img src={ThumbsDownImg} alt="thumbs down" />
-            <span className="voting-card__gauge-number">{percentages.negative} %</span>
+            <span className="voting-card__gauge-number">
+              {percentages.negative} %
+            </span>
           </div>
         </div>
       </div>

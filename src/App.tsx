@@ -25,6 +25,7 @@ function App() {
           {people?.map((person) => (
             <VotingCard
               key={person.id}
+              id={person.id}
               name={person.name}
               description={person.description}
               category={person.category}

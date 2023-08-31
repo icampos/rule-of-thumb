@@ -5,7 +5,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../service/firebase.config";
 
-const useFetchData = () => {
+const UseFetchData = () => {
   const [people, setPeople] = useState<any[]>([])
 
   const fetchPost = async () => {
@@ -21,12 +21,11 @@ const useFetchData = () => {
 
   useEffect(()=>{
     fetchPost();
-}, [])
-
+}, [people.length])
 
   return {
     people
   }
 };
 
-export default useFetchData;
+export default UseFetchData;

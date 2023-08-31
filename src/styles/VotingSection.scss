@@ -66,6 +66,7 @@
     @include tablet {
       flex-direction: column;
       gap: 14px;
+      overflow: hidden;
     }
   }
 
