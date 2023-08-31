@@ -29,6 +29,27 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `Additional Information`
+
+#### `CSS and SASS`
+
+For the best interest on consistency, the app is following a similar approach to **BEM** .\
+**SASS** has been implemented for the new components to follow this structure and make it readable and reusable
+
+#### `React`
+
+**React** ecosystem has been used in order to componetize the application .\
+**React Context** has been used to keep track of app general state .\
+**React Hooks** has been implemented to abstract the logic and try to keep the component as presentational as possible
+
+#### `Firebase`
+
+**Firebase** has been choosen as BE service to persist data
+
+#### `Testing`
+
+**Jest + React Testing Library** A couple of test has been added in order to validate a couple of requirements
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
