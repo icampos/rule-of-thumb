@@ -40,9 +40,10 @@ const VotingCard = ({
     selectedClass,
     getPercentages,
     handleUpdateData,
-  } = useVoting({id, votes});
+    isVoted,
+  } = useVoting({id, votes, voted});
 
-  const votedState = voted
+  const votedState = isVoted
     ? {
         categoryText: "Thank you for your vote!",
         voteButtonText: "Vote Again",
