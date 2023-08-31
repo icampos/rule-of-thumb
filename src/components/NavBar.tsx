@@ -16,16 +16,16 @@ const NavBar = () => {
         </button>
         <ul className="nav__links">
           <li>
-            <a href="#">Past Trials</a>
+            <a href="/">Past Trials</a>
           </li>
           <li>
-            <a href="#">How It Works</a>
+            <a href="/">How It Works</a>
           </li>
           <li>
-            <a href="#">Login / Sign Up</a>
+            <a href="/">Login / Sign Up</a>
           </li>
           <li>
-            <form action="javascript:void(0)">
+            <form>
               <input
                 className="nav__search-input"
                 aria-label="search"

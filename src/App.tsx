@@ -10,8 +10,6 @@ import VotingCard from "./components/VotingCard";
 
 import UseFetchData from "./hooks/useOnSnapShot";
 
-import PopeFrancisImg from "./assets/img/pope-francis.png";
-
 function App() {
   const { people } = UseFetchData();
 
