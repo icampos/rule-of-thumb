@@ -61,7 +61,7 @@ const VotingCard = ({
   const percentages = getPercentages(votes.positive, votes.negative);
 
   return (
-    <div className={`voting-card voting-card__${viewOption}`}>
+    <div className={`voting-card ${viewOption}`}>
       <img className="voting-card__background" src={picture} alt={name} />
       <div className="voting-card__glass-background"></div>
       <div className="voting-card__content">

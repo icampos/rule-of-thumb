@@ -2,6 +2,9 @@
 
 .voting-section {
   padding: 0 12px;
+  @include desktop {
+    padding: 0;
+  }
 
   &__header {
     margin: 24px 0;
@@ -72,8 +75,15 @@
   &__grid {
     @include tablet {
       display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 21px;
+      grid-row-gap: 21px;
+    }
+    @include desktop {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       grid-column-gap: 27px;
       grid-row-gap: 27px;
     }
