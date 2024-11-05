@@ -4,6 +4,7 @@ import { db } from "../service/firebase.config";
 interface votes {
     positive: number;
     negative: number;
+    neutral?: number;
   };
 
 const UseUpdateData = (personId: string, votes: votes, voted: boolean) => {
