@@ -18,7 +18,7 @@ const BannerBottom = () => {
       />
       <div className="banner__left">
         <h2 className="banner__heading">
-          Is there anyone else you would want us to add?
+          Is there anyone else you would want us to add? Let us know.
         </h2>
       </div>
       <div className="banner__right">
